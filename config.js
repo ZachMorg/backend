@@ -11,6 +11,9 @@ const PORT = +process.env.PORT || 3001;
 
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
+  if(process.env.NODE_ENV === 'production'){
+    return 'postgres://xmjwuqfu:0yYsCGbIcdYKHE9v1ewwenSXhYEJIV5I@heffalump.db.elephantsql.com/xmjwuqfu';
+  }
   return (process.env.NODE_ENV === "test")
       ? "postgresql://postgres:Secret123@localhost/jobly_test"
       : "postgresql://postgres:Secret123@localhost/jobly";
